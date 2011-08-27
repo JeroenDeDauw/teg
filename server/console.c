@@ -108,9 +108,9 @@ STATIC TEG_STATUS con_stats_show( PSPLAYER pJ )
 			pJ->numjug,
 			pJ->player_stats.score,
 			pJ->player_stats.countries_won,
-			0,
+			pJ->player_stats.countries_lost,
 			pJ->player_stats.armies_killed,
-			0,
+			pJ->player_stats.armies_lost,
 			pJ->name,
 			pJ->human ? _("yes") : _("no")
 			);

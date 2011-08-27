@@ -618,6 +618,8 @@ STATIC TEG_STATUS token_attack( int fd, char *str )
 	/* updated statistics */
 	pJ_src->player_stats.armies_killed += dst_lost;
 	pJ_dst->player_stats.armies_killed += src_lost;
+	pJ_dst->player_stats.armies_lost += dst_lost;
+	pJ_src->player_stats.armies_lost += src_lost;
 
 	/* conquisto el country | country was conquered */
 	if( g_countries[dst].ejercitos == 0) {
@@ -826,7 +828,7 @@ STATIC TEG_STATUS token_card( int fd, char *str )
 	tarjeta_sacar( &pP->tarjeta, pJ->numjug );
 
 	/*
-	 * Me fijo si el player es dueño del país que dice la tarjeta. Si es así
+	 * Me fijo si el player es dueï¿½o del paï¿½s que dice la tarjeta. Si es asï¿½
 	 * le agrego 2 fichas automaticamente como dice el reglamento.
 	 * Check if the card that the player gets is for a country that this player
 	 * owns. If yes, automatically place two armies according to the rules.

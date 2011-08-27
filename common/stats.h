@@ -31,7 +31,9 @@
 typedef struct _player_stats 
 {
 	int countries_won;		/**< number of countries won */
+	int countries_lost;		/**< number of countries lost */
 	int armies_killed;		/**< number of armies killed */
+	int armies_lost;		/**< number of armies lost */
 	int continents_turn[CONT_CANT];	/**< number of turns that the conq was defended */
 	int players_killed;		/**< quantity of players killed */
 
