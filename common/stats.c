@@ -40,7 +40,7 @@ TEG_STATUS stats_score( PPLAYER_STATS s )
 
 	/* points for armies, countries */
 	s->score =
-		s->countries_won * 5 + s->armies_killed * 2;
+		s->countries_won * 5 + s->armies_killed * 2 - s->countries_won * 2 - s->armies_killed;
 
 	/* points for defending continents */
 	for(i=0;i<CONT_CANT;i++)

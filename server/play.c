@@ -651,6 +651,7 @@ STATIC TEG_STATUS token_attack( int fd, char *str )
 
 		/* updated statistics */
 		pJ_src->player_stats.countries_won ++;
+		pJ_dst->player_stats.countries_lost ++;
 	}
 
 	/* update the scores */
