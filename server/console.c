@@ -205,7 +205,7 @@ STATIC TEG_STATUS con_status(int fd, char*unused)
 			g_game.round_number,
 			(g_game.mission?_("TRUE"):_("FALSE"))
 			);
-	net_printf(fd,_("fd, number, countries, armies, cards, exch, name, human, color, status, address\n"));
+	net_printf(fd,_("fd, number, countries, countries_won, countries_lost, armies, armies_killed, armies_lost, cards, exch, name, human, color, status, address\n"));
 
 	while( !IsListEmpty( &g_list_player ) && (l != &g_list_player) ) {
 		int color;
@@ -213,10 +213,10 @@ STATIC TEG_STATUS con_status(int fd, char*unused)
 
 		color = (pJ->color==-1) ? TEG_MAX_PLAYERS : pJ->color;
 		if( pJ->is_player ) {
-			net_printf(fd,"%-3d %d  %-3u  %-3u  %-3u  %-3u  %-3u  %-3u %d  %d  %-15s  %s  %s  %s  %s\n",
+			net_printf(fd,"%-3d %d %-3u %-3u %-3u %-3u %-3u %-3u %d %d %-15s %s %s %s %s\n",
 				pJ->fd,
 				pJ->numjug,
-				pJ->tot_countries,
+				pJ->tot_countries + 9000,
 				pJ->player_stats.countries_won,
 				pJ->player_stats.countries_lost,
 				pJ->tot_armies,

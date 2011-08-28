@@ -46,69 +46,73 @@ TEG_STATUS aux_status( PCPLAYER pj, char *str )
 	p.separador = &separador;
 	p.data = str;
 
+	char* var;
+	var = "0";
 	if( parser_call( &p ) && p.hay_otro ) {
 		strncpy( pj->name, p.token, sizeof(pj->name)-1);
 	} else goto error;
-
+	var = "1";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->color = atoi( p.token);
 	} else goto error;
-
+	var = "2";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->score = atoi( p.token);
 	} else goto error;
-
+	var = "3";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->numjug = atoi( p.token);
 	} else goto error;
-
+	var = "4";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->estado = atoi( p.token);
 	} else goto error;
-	
+	var = "5";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_countries = atoi( p.token);
 	} else goto error;
-
+	var = "6";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_countries_won = atoi( p.token);
 	} else goto error;
-
+	var = "7";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_countries_lost = atoi( p.token);
 	} else goto error;
-
+	var = "8";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_armies = atoi( p.token);
 	} else goto error;
-
+	var = "9";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_armies_killed = atoi( p.token);
 	} else goto error;
-
+	var = "10";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_armies_lost = atoi( p.token);
 	} else goto error;
-
+	var = "11";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_cards = atoi( p.token);
 	} else goto error;
-
+	var = "12";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->empezo_turno = atoi( p.token);
 	} else goto error;
-
+	var = "13";
 	if( parser_call( &p ) && p.hay_otro ) {
 		pj->human = atoi( p.token);
 	} else goto error;
-
+	var = "14";
 	if( parser_call( &p ) && !p.hay_otro ) {
 		strncpy( pj->addr, p.token, sizeof(pj->addr)-1);
 	} else goto error;
 
 	return TEG_STATUS_SUCCESS;
 error:
-	textmsg(M_ERR,"error in aux_status()");
+	strcat (str, " - error in aux_status at var ");
+	strcat (str, var);
+	textmsg(M_ERR,str);
 	return TEG_STATUS_ERROR;
 }
 

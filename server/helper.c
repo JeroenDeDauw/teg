@@ -253,29 +253,37 @@ TEG_STATUS aux_token_stasta(char *strout, size_t len )
 		if( j->is_player ) {
 			int color = (j->color==-1) ? TEG_MAX_PLAYERS : j->color;
 			if(n==0) {
-				snprintf(strtmp,sizeof(strtmp)-1,"%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"
+				snprintf(strtmp,sizeof(strtmp)-1,"%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"
 						,j->name
 						,color
 						,j->player_stats.score
 						,j->numjug
 						,j->estado
 						,(! g_game.fog_of_war) ? j->tot_countries : -1
+						,(! g_game.fog_of_war) ? j->player_stats.countries_won : -1
+						,(! g_game.fog_of_war) ? j->player_stats.countries_lost : -1
 						,(! g_game.fog_of_war) ? j->tot_armies : -1
-						,j->tot_cards
+						,(! g_game.fog_of_war) ? j->player_stats.armies_killed : -1
+						,(! g_game.fog_of_war) ? j->player_stats.armies_lost : -1
+						,(! g_game.fog_of_war) ? j->tot_cards : -1
 						,(g_game.empieza_turno && (g_game.empieza_turno->numjug==j->numjug))
 						,j->human
 						,j->addr );
 				n=1;
 			} else 
-				snprintf(strtmp,sizeof(strtmp)-1,"/%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"
+				snprintf(strtmp,sizeof(strtmp)-1,"/%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"
 						,j->name
 						,color
 						,j->player_stats.score
 						,j->numjug
 						,j->estado
 						,(! g_game.fog_of_war) ? j->tot_countries : -1
+						,(! g_game.fog_of_war) ? j->player_stats.countries_won : -1
+						,(! g_game.fog_of_war) ? j->player_stats.countries_lost : -1
 						,(! g_game.fog_of_war) ? j->tot_armies : -1
-						,j->tot_cards
+						,(! g_game.fog_of_war) ? j->player_stats.armies_killed : -1
+						,(! g_game.fog_of_war) ? j->player_stats.armies_lost : -1
+						,(! g_game.fog_of_war) ? j->tot_cards : -1
 						,(g_game.empieza_turno && (g_game.empieza_turno->numjug==j->numjug))
 						,j->human
 						,j->addr );
