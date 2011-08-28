@@ -119,7 +119,11 @@ status_create_model (void)
 			G_TYPE_STRING,	/* address */
 			G_TYPE_BOOLEAN,	/* human? */
 			G_TYPE_INT,	/* countries */
+			G_TYPE_INT,	/* countries won */
+			G_TYPE_INT,	/* countries lost */
 			G_TYPE_INT,	/* armies */
+			G_TYPE_INT,	/* armies killed */
+			G_TYPE_INT,	/* armies lost */
 			G_TYPE_UINT,	/* cards */
 			G_TYPE_STRING,	/* status */
 			G_TYPE_BOOLEAN	/* started the turn */
@@ -192,6 +196,24 @@ static void status_add_columns (GtkTreeView *treeview)
 	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_COUNTRIES);
 	gtk_tree_view_append_column (treeview, column);
 
+	/* column for countries won */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Countries won"),
+			renderer,
+			"text", STATUS_COLUMN_COUNTRIES_WON,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_COUNTRIES_WON);
+	gtk_tree_view_append_column (treeview, column);
+
+	/* column for countries lost */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Countries lost"),
+			renderer,
+			"text", STATUS_COLUMN_COUNTRIES_LOST,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_COUNTRIES_LOST);
+	gtk_tree_view_append_column (treeview, column);
+
 	/* column for armies */
 	renderer = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Armies"),
@@ -199,6 +221,24 @@ static void status_add_columns (GtkTreeView *treeview)
 			"text", STATUS_COLUMN_ARMIES,
 			NULL);
 	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_ARMIES);
+	gtk_tree_view_append_column (treeview, column);
+
+	/* column for armies killed */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Armies killed"),
+			renderer,
+			"text", STATUS_COLUMN_ARMIES_KILLED,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_ARMIES_KILLED);
+	gtk_tree_view_append_column (treeview, column);
+
+	/* column for armies lost */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Armies lost"),
+			renderer,
+			"text", STATUS_COLUMN_ARMIES_LOST,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_ARMIES_LOST);
 	gtk_tree_view_append_column (treeview, column);
 
 	/* column for cards */
@@ -287,7 +327,11 @@ static TEG_STATUS status_update_model( GtkTreeModel *model)
 				STATUS_COLUMN_ADDR, pJ->addr,
 				STATUS_COLUMN_HUMAN, pJ->human,
 				STATUS_COLUMN_COUNTRIES, pJ->tot_countries,
+				STATUS_COLUMN_COUNTRIES_WON, pJ->tot_countries_won,
+				STATUS_COLUMN_COUNTRIES_LOST,pJ->tot_countries_lost,
 				STATUS_COLUMN_ARMIES, pJ->tot_armies,
+				STATUS_COLUMN_ARMIES_KILLED, pJ->tot_armies_killed,
+				STATUS_COLUMN_ARMIES_LOST, pJ->tot_armies_lost,
 				STATUS_COLUMN_CARDS, pJ->tot_cards,
 				STATUS_COLUMN_STATUS, _(g_estados[pJ->estado]),
 				STATUS_COLUMN_WHO, pJ->empezo_turno,

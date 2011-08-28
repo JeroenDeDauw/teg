@@ -34,7 +34,11 @@ typedef struct _player {
 	int numjug;
 	PLAYER_STATUS estado;
 	int tot_countries;
+	int tot_countries_won;
+	int tot_countries_lost;
 	int tot_armies;
+	int tot_armies_killed;
+	int tot_armies_lost;
 	int tot_cards;
 	int empezo_turno;		/* dice si empezo el turno */
 	int human;

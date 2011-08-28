@@ -71,7 +71,23 @@ TEG_STATUS aux_status( PCPLAYER pj, char *str )
 	} else goto error;
 
 	if( parser_call( &p ) && p.hay_otro ) {
+		pj->tot_countries_won = atoi( p.token);
+	} else goto error;
+
+	if( parser_call( &p ) && p.hay_otro ) {
+		pj->tot_countries_lost = atoi( p.token);
+	} else goto error;
+
+	if( parser_call( &p ) && p.hay_otro ) {
 		pj->tot_armies = atoi( p.token);
+	} else goto error;
+
+	if( parser_call( &p ) && p.hay_otro ) {
+		pj->tot_armies_killed = atoi( p.token);
+	} else goto error;
+
+	if( parser_call( &p ) && p.hay_otro ) {
+		pj->tot_armies_lost = atoi( p.token);
 	} else goto error;
 
 	if( parser_call( &p ) && p.hay_otro ) {
