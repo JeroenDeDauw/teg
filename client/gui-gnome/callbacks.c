@@ -242,6 +242,7 @@ void on_about_activate(GtkMenuItem *menuitem, gpointer user_data)
 		"    Thomas R. Koll",
 		"    Raymond Ostertag",
 		"    Stefan Nordhausen",
+		"    Jeroen De Dauw",
 		"",
 		"Detailed info in the PEOPLE file or in the homepage",
 		NULL

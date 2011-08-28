@@ -1,6 +1,6 @@
 
                            Tenes Empanadas Graciela
-			          v0.11.3                                       
+			          v0.12                                       
 
 
 ChangeLog:
@@ -17,7 +17,7 @@ ChangeLog:
    messages from human players. For those of you who are tired of the witty comment
    the robots make ;)
  
- . Included patch from Gonéri Le Bouder to convert documentation to XML to make yelp
+ . Included patch from Gonï¿½ri Le Bouder to convert documentation to XML to make yelp
    (Gnome help browser) happy. Will have to think of something for people without
    Gnome
    

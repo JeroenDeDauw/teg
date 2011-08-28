@@ -21,4 +21,4 @@
 
 
 NAMEVERSION = "Python TEG client"
-NUMBERVERSION = "0.0.1"
+NUMBERVERSION = "0.0.2"

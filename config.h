@@ -171,7 +171,7 @@
 /* #undef PACKAGE_SOURCE_DIR */
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "Tenes Empanadas Graciela 0.11.3"
+#define PACKAGE_STRING "Tenes Empanadas Graciela 0.12"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "teg"
@@ -180,7 +180,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "0.11.3"
+#define PACKAGE_VERSION "0.12"
 
 /* The installation prefix */
 #define PREFIX "/usr/local"
@@ -198,7 +198,7 @@
 /* #undef TM_IN_SYS_TIME */
 
 /* Version number of package */
-#define VERSION "0.11.3"
+#define VERSION "0.12"
 
 /* Enable GGZ support */
 /* #undef WITH_GGZ */

@@ -25,7 +25,7 @@
 #ifndef __TEG_PROTOCOL_H
 #define __TEG_PROTOCOL_H
 
-#define PROTOCOL_HIVER	6
+#define PROTOCOL_HIVER	7
 #define PROTOCOL_LOVER	0
 #define PROT_MAX_LEN	(5000)
 

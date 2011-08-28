@@ -1,7 +1,7 @@
 # spec file for package teg
 # based on the original file for Suse by David Haller
 
-%define  ver     0.11.3
+%define  ver     0.12
 %define  RELEASE 1
 %define  rel     %{?CUSTOM_RELEASE} %{!?CUSTOM_RELEASE:%RELEASE}
 %define  prefix  /usr
@@ -27,7 +27,7 @@ BuildRoot: /var/tmp/rpm/teg-%{PACKAGE_VERSION}-root
 Source:     http://prdownloads.sourceforge.net/teg/teg-%{PACKAGE_VERSION}.tar.bz2
 
 %description
-Tenes Emapandas Graciela (TEG) is a clone of 'Plan Táctico y Estratégico
+Tenes Emapandas Graciela (TEG) is a clone of 'Plan Tï¿½ctico y Estratï¿½gico
 de la Guerra' (Tactical and Strategic plan of the War), which is a
 pseudo-clone of Risk, a turn-based strategy game. Some rules are different.
 
