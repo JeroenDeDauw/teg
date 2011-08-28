@@ -213,7 +213,7 @@ STATIC TEG_STATUS con_status(int fd, char*unused)
 
 		color = (pJ->color==-1) ? TEG_MAX_PLAYERS : pJ->color;
 		if( pJ->is_player ) {
-			net_printf(fd,"%-3d %d  %-3u  %-3u  %d  %d  %-15s  %s  %s  %s  %s\n",
+			net_printf(fd,"%-3d %d  %-3u  %-3u  %-3u  %-3u  %-3u  %-3u %d  %d  %-15s  %s  %s  %s  %s\n",
 				pJ->fd,
 				pJ->numjug,
 				pJ->tot_countries,
@@ -231,8 +231,12 @@ STATIC TEG_STATUS con_status(int fd, char*unused)
 				pJ->addr
 			);					
 		} else {
-			net_printf(fd,"%-3d %d  %-3d  %-3d  %d  %d  %-15s  %s  %s  %s  %s\n",
+			net_printf(fd,"%-3d %d  %-3d  %-3d  %-3d  %-3d  %-3d  %-3d  %d  %d  %-15s  %s  %s  %s  %s\n",
 				pJ->fd,
+				-1,
+				-1,
+				-1,
+				-1,
 				-1,
 				-1,
 				-1,
