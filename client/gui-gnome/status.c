@@ -121,9 +121,11 @@ status_create_model (void)
 			G_TYPE_INT,	/* countries */
 			G_TYPE_INT,	/* countries won */
 			G_TYPE_INT,	/* countries lost */
+			G_TYPE_FLOAT,	/* countries % */
 			G_TYPE_INT,	/* armies */
 			G_TYPE_INT,	/* armies killed */
 			G_TYPE_INT,	/* armies lost */
+			G_TYPE_FLOAT,	/* armies % */
 			G_TYPE_UINT,	/* cards */
 			G_TYPE_STRING,	/* status */
 			G_TYPE_BOOLEAN	/* started the turn */
@@ -214,6 +216,15 @@ static void status_add_columns (GtkTreeView *treeview)
 	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_COUNTRIES_LOST);
 	gtk_tree_view_append_column (treeview, column);
 
+	/* column for countries % */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Countries %"),
+			renderer,
+			"text", STATUS_COLUMN_COUNTRIES_RATIO,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_COUNTRIES_RATIO);
+	gtk_tree_view_append_column (treeview, column);
+
 	/* column for armies */
 	renderer = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Armies"),
@@ -239,6 +250,15 @@ static void status_add_columns (GtkTreeView *treeview)
 			"text", STATUS_COLUMN_ARMIES_LOST,
 			NULL);
 	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_ARMIES_LOST);
+	gtk_tree_view_append_column (treeview, column);
+
+	/* column for armies % */
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (_("Armies %"),
+			renderer,
+			"text", STATUS_COLUMN_ARMIES_RATIO,
+			NULL);
+	gtk_tree_view_column_set_sort_column_id (column, STATUS_COLUMN_ARMIES_RATIO);
 	gtk_tree_view_append_column (treeview, column);
 
 	/* column for cards */
@@ -316,6 +336,22 @@ static TEG_STATUS status_update_model( GtkTreeModel *model)
 		gchar *name;
 		pJ = (PCPLAYER) l;
 		
+		float cRatio = pJ->tot_countries_won;
+		if ( pJ->tot_countries_lost == 0 ) {
+			cRatio = pJ->tot_countries_won == 0 ? 1 : 9001;
+		}
+		else {
+			cRatio /= pJ->tot_countries_lost;
+		}
+
+		float aRatio = pJ->tot_armies_killed;
+		if ( pJ->tot_armies_lost == 0 ) {
+			aRatio = pJ->tot_armies_killed == 0 ? 1 : 9001;
+		}
+		else {
+			aRatio /= pJ->tot_armies_lost;
+		}
+
 		name = translate_to_utf8( pJ->name );
 
 		gtk_list_store_append (store, &iter);
@@ -328,10 +364,12 @@ static TEG_STATUS status_update_model( GtkTreeModel *model)
 				STATUS_COLUMN_HUMAN, pJ->human,
 				STATUS_COLUMN_COUNTRIES, pJ->tot_countries,
 				STATUS_COLUMN_COUNTRIES_WON, pJ->tot_countries_won,
-				STATUS_COLUMN_COUNTRIES_LOST,pJ->tot_countries_lost,
+				STATUS_COLUMN_COUNTRIES_LOST, pJ->tot_countries_lost,
+				STATUS_COLUMN_COUNTRIES_RATIO, cRatio,
 				STATUS_COLUMN_ARMIES, pJ->tot_armies,
 				STATUS_COLUMN_ARMIES_KILLED, pJ->tot_armies_killed,
 				STATUS_COLUMN_ARMIES_LOST, pJ->tot_armies_lost,
+				STATUS_COLUMN_ARMIES_RATIO, aRatio,
 				STATUS_COLUMN_CARDS, pJ->tot_cards,
 				STATUS_COLUMN_STATUS, _(g_estados[pJ->estado]),
 				STATUS_COLUMN_WHO, pJ->empezo_turno,
