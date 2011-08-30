@@ -338,7 +338,7 @@ static TEG_STATUS status_update_model( GtkTreeModel *model)
 		
 		float cRatio = pJ->tot_countries_won;
 		if ( pJ->tot_countries_lost == 0 ) {
-			cRatio = pJ->tot_countries_won == 0 ? 1 : 9001;
+			cRatio = pJ->tot_countries_won == 0 ? 1 : 9000 + pJ->tot_countries_won;
 		}
 		else {
 			cRatio /= pJ->tot_countries_lost;
@@ -346,7 +346,7 @@ static TEG_STATUS status_update_model( GtkTreeModel *model)
 
 		float aRatio = pJ->tot_armies_killed;
 		if ( pJ->tot_armies_lost == 0 ) {
-			aRatio = pJ->tot_armies_killed == 0 ? 1 : 9001;
+			aRatio = pJ->tot_armies_killed == 0 ? 1 : 9000 + pJ->tot_armies_killed;
 		}
 		else {
 			aRatio /= pJ->tot_armies_lost;
